@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://kfj7xh66lcla"]
+
+[ext_resource type="Theme" uid="uid://puwmd66mcrxe" path="res://resources/theme.tres" id="1_f37nn"]
+[ext_resource type="StyleBox" uid="uid://dq507gkjivhkr" path="res://resources/editor.tres" id="2_5234q"]
+[ext_resource type="Script" uid="uid://b5tb8w8y0l4gp" path="res://scripts/javascript_code_editor.gd" id="4_dxyla"]
+
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_dxyla"]
+
+[node name="JavaScriptCodeEditor" type="CodeEdit"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_f37nn")
+theme_override_colors/caret_color = Color(1, 1, 1, 1)
+theme_override_colors/selection_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_styles/normal = ExtResource("2_5234q")
+theme_override_styles/focus = ExtResource("2_5234q")
+theme_override_styles/read_only = ExtResource("2_5234q")
+theme_override_styles/completion = ExtResource("2_5234q")
+scroll_fit_content_height = true
+scroll_fit_content_width = true
+syntax_highlighter = SubResource("CodeHighlighter_dxyla")
+indent_automatic = true
+auto_brace_completion_enabled = true
+script = ExtResource("4_dxyla")

@@ -1,0 +1,15 @@
+{
+	"problems": [
+		{
+			"id": "sumArray",
+			"lines": [
+				"class Solution {\n\tsumArray(nums) {\n\t\tvar sum = 0;",
+				"\t\t",
+				"\t\treturn sum;\n\t}\n}"
+			],
+			"editable": [
+				1
+			]
+		}
+	]
+}
