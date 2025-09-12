@@ -1,0 +1,107 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnudfnvafvqj8"]
+
+[ext_resource type="Theme" uid="uid://puwmd66mcrxe" path="res://resources/theme.tres" id="1_ouk20"]
+[ext_resource type="Script" uid="uid://b88gvuqt0pwck" path="res://scripts/menu.gd" id="1_ytr4m"]
+[ext_resource type="StyleBox" uid="uid://dn7mlq2dd4r86" path="res://resources/panel.tres" id="2_mae5d"]
+[ext_resource type="Texture2D" uid="uid://ce5hhv33h3f85" path="res://external_assets/noun_project/bug-target-small.png" id="3_4hy44"]
+[ext_resource type="StyleBox" uid="uid://b2eihv04p1xai" path="res://resources/button.tres" id="3_mae5d"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ytr4m")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ouk20")
+theme_override_styles/panel = ExtResource("2_mae5d")
+
+[node name="TitleVBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/TitleVBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/TitleVBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("3_4hy44")
+stretch_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/TitleVBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("1_ouk20")
+theme_override_font_sizes/normal_font_size = 90
+bbcode_enabled = true
+text = "Debug"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/TitleVBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+
+[node name="ButtonVBoxContainer" type="VBoxContainer" parent="PanelContainer/TitleVBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlayButton" type="Button" parent="PanelContainer/TitleVBoxContainer/HBoxContainer/ButtonVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = ExtResource("3_mae5d")
+theme_override_styles/normal_mirrored = ExtResource("3_mae5d")
+theme_override_styles/pressed = ExtResource("3_mae5d")
+theme_override_styles/pressed_mirrored = ExtResource("3_mae5d")
+theme_override_styles/hover = ExtResource("3_mae5d")
+theme_override_styles/hover_mirrored = ExtResource("3_mae5d")
+theme_override_styles/hover_pressed = ExtResource("3_mae5d")
+theme_override_styles/hover_pressed_mirrored = ExtResource("3_mae5d")
+theme_override_styles/disabled = ExtResource("3_mae5d")
+theme_override_styles/disabled_mirrored = ExtResource("3_mae5d")
+theme_override_styles/focus = ExtResource("3_mae5d")
+text = "Play"
+
+[node name="SettingsButton" type="Button" parent="PanelContainer/TitleVBoxContainer/HBoxContainer/ButtonVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = ExtResource("3_mae5d")
+theme_override_styles/normal_mirrored = ExtResource("3_mae5d")
+theme_override_styles/pressed = ExtResource("3_mae5d")
+theme_override_styles/pressed_mirrored = ExtResource("3_mae5d")
+theme_override_styles/hover = ExtResource("3_mae5d")
+theme_override_styles/hover_mirrored = ExtResource("3_mae5d")
+theme_override_styles/hover_pressed = ExtResource("3_mae5d")
+theme_override_styles/hover_pressed_mirrored = ExtResource("3_mae5d")
+theme_override_styles/disabled = ExtResource("3_mae5d")
+theme_override_styles/disabled_mirrored = ExtResource("3_mae5d")
+theme_override_styles/focus = ExtResource("3_mae5d")
+text = "Settings"
+
+[node name="QuitButton" type="Button" parent="PanelContainer/TitleVBoxContainer/HBoxContainer/ButtonVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = ExtResource("3_mae5d")
+theme_override_styles/normal_mirrored = ExtResource("3_mae5d")
+theme_override_styles/pressed = ExtResource("3_mae5d")
+theme_override_styles/pressed_mirrored = ExtResource("3_mae5d")
+theme_override_styles/hover = ExtResource("3_mae5d")
+theme_override_styles/hover_mirrored = ExtResource("3_mae5d")
+theme_override_styles/hover_pressed = ExtResource("3_mae5d")
+theme_override_styles/hover_pressed_mirrored = ExtResource("3_mae5d")
+theme_override_styles/disabled = ExtResource("3_mae5d")
+theme_override_styles/disabled_mirrored = ExtResource("3_mae5d")
+theme_override_styles/focus = ExtResource("3_mae5d")
+text = "Quit"

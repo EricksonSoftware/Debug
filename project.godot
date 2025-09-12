@@ -11,10 +11,11 @@ config_version=5
 [application]
 
 config/name="Debug"
+run/main_scene="uid://dnudfnvafvqj8"
 config/use_custom_user_dir=true
 config/features=PackedStringArray("4.5", "GL Compatibility")
 run/max_fps=60
-config/icon="res://icon.svg"
+config/icon="uid://ce5hhv33h3f85"
 
 [display]
 
