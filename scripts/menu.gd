@@ -11,7 +11,7 @@ func _ready() -> void:
 
 func on_play_button() -> void:
 	pass
-	get_tree().change_scene_to_file("res://scenes/problem.tscn")
+	get_tree().change_scene_to_file("res://scenes/problem_editor.tscn")
 
 func on_setttings_button() -> void:
 	pass

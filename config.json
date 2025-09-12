@@ -10,6 +10,17 @@
 			"editable": [
 				1
 			]
+		},
+		{
+			"id": "sumArray2",
+			"lines": [
+				"class Solution {\n\tsumArray(nums) {\n\t\tvar sum = 0;\n\t\tfor (var i = 0; i < nums.length; i++) {",
+				"\t\t\tsum = nums[i];",
+				"\t\t}\n\t\treturn sum;\n\t}\n}"
+			],
+			"editable": [
+				1
+			]
 		}
 	]
 }
