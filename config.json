@@ -75,6 +75,30 @@
 			"editable": [
 				2
 			]
+		},
+		{
+			"id": "countVowels",
+			"title": "Count Vowels",
+			"lines": [
+				"class Solution {\n\t// return the number of vowels (excluding 'y') in 'str'\n\tcountVowels(str) {\n\t\tconst vowels = ['a', 'e', 'i', 'o', 'u'];\n\t\tvar count = 0;",
+				"\t\tfor (var ch of str) {\n\t\t\tif (vowels.includes(ch)) {",
+				"\t\t\t\tcount += 1;\n\t\t\t}\n\t\t}\n\t\treturn count;\n\t}\n}"
+			],
+			"editable": [
+				1
+			]
+		},
+		{
+			"id": "blackBox",
+			"title": "Black Box",
+			"lines": [
+				"class Solution {\n\t// NOTE: ORIGINAL IMPLEMENTATION LOST\n\t// PLEASE JUST FIX IT\n\t// THANKS!\n\t// -Bob\n\t//\n\t// Given an integer 'n', return the correct integer\n\tblackBox(n) {",
+				"\t\t// ???\n\t\treturn 0;",
+				"\t}\n}\n"
+			],
+			"editable": [
+				1
+			]
 		}
 	]
 }
