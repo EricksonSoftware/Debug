@@ -78,7 +78,7 @@ text = "Your coworker, Bob, sometimes writes buggy code but they are convinced t
 
 Bob has locked down most of the code to prevent people from changing it. Fortunately, some of the code remains editable.
 
-Your job is to fix the code so it passes the tests."
+Your job is to work around the code causing errors and get the tests to pass."
 autowrap_mode = 3
 
 [node name="LowerContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/TitleVBoxContainer"]
