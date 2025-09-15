@@ -11,6 +11,8 @@ const FUNCTION_COLOR : Color = Color("#6060ff")
 
 func _ready() -> void:
 	highlight_code()
+	if not editable:
+		self.modulate = Color(0.8, 0.8, 0.8)
 
 func highlight_code() -> void:
 	var highlighter : CodeHighlighter = syntax_highlighter as CodeHighlighter

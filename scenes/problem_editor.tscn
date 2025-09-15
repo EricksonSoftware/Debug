@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnovik7cs7hj6"]
+[gd_scene load_steps=6 format=3 uid="uid://bnovik7cs7hj6"]
 
 [ext_resource type="Script" uid="uid://eabni6bbij4" path="res://scripts/problem_editor.gd" id="1_oth8r"]
 [ext_resource type="StyleBox" uid="uid://dn7mlq2dd4r86" path="res://resources/panel.tres" id="1_ti25y"]
 [ext_resource type="Theme" uid="uid://puwmd66mcrxe" path="res://resources/theme.tres" id="1_vf5fu"]
 [ext_resource type="StyleBox" uid="uid://b2eihv04p1xai" path="res://resources/button.tres" id="4_64x5r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_58uox"]
+bg_color = Color(0.09453329, 0.101342656, 0.1388149, 1)
 
 [node name="ProblemEditor" type="PanelContainer"]
 anchors_preset = 15
@@ -22,24 +25,29 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="SplitContainer" type="SplitContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/SplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/SplitContainer/VBoxContainer2"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="ProblemTitle" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="ProblemTitle" type="Label" parent="MarginContainer/SplitContainer/VBoxContainer2/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("1_vf5fu")
 text = "Problem Title"
 
-[node name="ResetCodeButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="ResetCodeButton" type="Button" parent="MarginContainer/SplitContainer/VBoxContainer2/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 theme = ExtResource("1_vf5fu")
+theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = ExtResource("4_64x5r")
 theme_override_styles/normal_mirrored = ExtResource("4_64x5r")
 theme_override_styles/pressed = ExtResource("4_64x5r")
@@ -53,11 +61,12 @@ theme_override_styles/disabled_mirrored = ExtResource("4_64x5r")
 theme_override_styles/focus = ExtResource("4_64x5r")
 text = " Reset Code "
 
-[node name="RunCodeButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="RunCodeButton" type="Button" parent="MarginContainer/SplitContainer/VBoxContainer2/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 theme = ExtResource("1_vf5fu")
+theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = ExtResource("4_64x5r")
 theme_override_styles/normal_mirrored = ExtResource("4_64x5r")
 theme_override_styles/pressed = ExtResource("4_64x5r")
@@ -71,13 +80,49 @@ theme_override_styles/disabled_mirrored = ExtResource("4_64x5r")
 theme_override_styles/focus = ExtResource("4_64x5r")
 text = " Run Code "
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/SplitContainer/VBoxContainer2"]
+clip_contents = false
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_58uox")
 
-[node name="EditorContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
+[node name="EditorContainer" type="VBoxContainer" parent="MarginContainer/SplitContainer/VBoxContainer2/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/SplitContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/SplitContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/SplitContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="MarginContainer/SplitContainer/VBoxContainer/PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Output" type="RichTextLabel" parent="MarginContainer/SplitContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_vf5fu")
+theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/bold_font_size = 18
+theme_override_font_sizes/bold_italics_font_size = 18
+theme_override_font_sizes/italics_font_size = 18
+theme_override_font_sizes/mono_font_size = 18
+bbcode_enabled = true
+text = "The quick"
+fit_content = true

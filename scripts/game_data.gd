@@ -20,10 +20,11 @@ func load_config() -> void:
 	problems = {}
 	var index : int = 0
 	for problem_data in json.problems:
-		if "id" not in problem_data or "lines" not in problem_data or "editable" not in problem_data:
+		if "id" not in problem_data or "lines" not in problem_data or "editable" not in problem_data or "title" not in problem_data:
 			continue
 		var problem : Problem = Problem.new()
 		problem.id = problem_data["id"]
+		problem.title = problem_data["title"]
 		problem.lines = to_string_array(problem_data["lines"])
 		problem.editable = to_int_array(problem_data["editable"])
 		problem.index = index

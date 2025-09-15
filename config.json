@@ -2,21 +2,23 @@
 	"problems": [
 		{
 			"id": "sumArray",
+			"title": "Sum Array",
 			"lines": [
-				"class Solution {\n\tsumArray(nums) {\n\t\tvar sum = 0;",
-				"\t\t",
-				"\t\treturn sum;\n\t}\n}"
+				"class Solution {\n\tsumArray(nums) {\n\t\tvar sum = 0;\n\t\tfor (var i = 0; i < nums.length; i++) {",
+				"\t\t\tsum = nums[i];",
+				"\t\t}\n\t\treturn sum;\n\t}\n}"
 			],
 			"editable": [
 				1
 			]
 		},
 		{
-			"id": "sumArray2",
+			"id": "maxIndex",
+			"title": "Max Index",
 			"lines": [
-				"class Solution {\n\tsumArray(nums) {\n\t\tvar sum = 0;\n\t\tfor (var i = 0; i < nums.length; i++) {",
-				"\t\t\tsum = nums[i];",
-				"\t\t}\n\t\treturn sum;\n\t}\n}"
+				"class Solution {\n\t// return index of largest element in integer array\n\tmaxIndex(nums) {",
+				"\t\tvar maxIndex = -1;\n\t\tvar maxValue = 999999;\n\t\tfor (var i = 0; i < nums.length; i++) {",
+				"\t\t\tif (nums[i] > maxValue) {\n\t\t\t\tmaxValue = nums[i];\n\t\t\t\tmaxIndex = i;\n\t\t\t}\n\t\t}\n\t\treturn maxIndex;\n\t}\n}"
 			],
 			"editable": [
 				1

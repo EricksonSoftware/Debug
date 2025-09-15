@@ -1,17 +1,21 @@
 class_name ProblemEditor
 extends PanelContainer
 
-@export var problem_id : String = "sumArray2"
+@export var problem_id : String = "sumArray"
 
 @onready var editor_container: VBoxContainer = %EditorContainer
 @onready var problem_title: Label = %ProblemTitle
 @onready var reset_code_button: Button = %ResetCodeButton
 @onready var run_code_button: Button = %RunCodeButton
-
+@onready var output: RichTextLabel = %Output
 
 var problem : Problem
 
 func _ready() -> void:
+	EventBus.code_problem_output_append.connect(on_output_append)
+	EventBus.code_problem_error_append.connect(on_error_append)
+	EventBus.code_problem_complete.connect(on_complete)
+	EventBus.code_problem_output_clear.connect(on_clear)
 	reset_code_button.pressed.connect(load_problem)
 	run_code_button.pressed.connect(run_code)
 	
@@ -19,7 +23,7 @@ func _ready() -> void:
 	load_problem()
 
 func load_problem() -> void:
-	problem_title.text = problem.id
+	problem_title.text = problem.title
 	
 	for child in editor_container.get_children():
 		editor_container.remove_child(child)
@@ -36,4 +40,22 @@ func load_problem() -> void:
 		editor_container.add_child(instance)
 
 func run_code() -> void:
-	pass
+	var solution_code : String = ""
+	for child in editor_container.get_children():
+		if child is JavaScriptCodeEditor:
+			var editor : JavaScriptCodeEditor = child as JavaScriptCodeEditor
+			solution_code += editor.text + "\n"
+	var thread : Thread = Thread.new()
+	thread.start(SolutionRunner.run_javascript_web.bind(problem_id, solution_code))
+
+func on_output_append(message : String) -> void:
+	output.text += message + "\n"
+
+func on_error_append(message : String) -> void:
+	output.text += "[color=red]%s[/color]\n" % [message]
+
+func on_complete(success : bool) -> void:
+	print(success)
+
+func on_clear() -> void:
+	output.text = ""
