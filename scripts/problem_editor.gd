@@ -11,6 +11,7 @@ extends PanelContainer
 @onready var back_button: Button = %BackButton
 
 var problem : Problem
+var timeout_timer : Timer
 
 func _ready() -> void:
 	EventBus.code_problem_output_append.connect(on_output_append)
@@ -24,6 +25,9 @@ func _ready() -> void:
 	problem_id = GameData.current_problem
 	problem = GameData.problems[problem_id]
 	load_problem()
+	timeout_timer = Timer.new()
+	timeout_timer.timeout.connect(on_timeout)
+	add_child(timeout_timer)
 
 func load_problem() -> void:
 	problem_title.text = problem.title
@@ -40,6 +44,7 @@ func load_problem() -> void:
 		editor_container.add_child(instance)
 
 func run_code() -> void:
+	run_code_button.set_deferred("disabled", true)
 	var solution_code : String = ""
 	for child in editor_container.get_children():
 		if child is JavaScriptCodeEditor:
@@ -47,6 +52,7 @@ func run_code() -> void:
 			solution_code += editor.text + "\n"
 	var thread : Thread = Thread.new()
 	thread.start(SolutionRunner.run_javascript_web.bind(problem_id, solution_code))
+	timeout_timer.start(5.0)
 
 func on_output_append(message : String) -> void:
 	output.text += message + "\n"
@@ -55,7 +61,8 @@ func on_error_append(message : String) -> void:
 	output.text += "[color=red]%s[/color]\n" % [message]
 
 func on_complete(success : bool) -> void:
-	print(success)
+	timeout_timer.stop()
+	run_code_button.set_deferred("disabled", false)
 	if success:
 		SaveData.set_problem_completed(problem_id)
 		on_back()
@@ -65,3 +72,8 @@ func on_clear() -> void:
 
 func on_back() -> void:
 	get_tree().change_scene_to_file("res://scenes/problem_selection.tscn")
+
+func on_timeout() -> void:
+	on_clear()
+	on_error_append("ERROR: Timeout. Look for infinite loops.")
+	run_code_button.set_deferred("disabled", false)

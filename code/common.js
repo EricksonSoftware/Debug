@@ -80,18 +80,22 @@ class BaseTest {
 	}
 }
 
-class TreeNode {
-	constructor(value, left, right) {
-		this.value = value ?? 0;
-		this.left = left ?? null;
-		this.right = right ?? null;
+if (typeof TreeNode === "undefined") {
+	class TreeNode {
+		constructor(value, left, right) {
+			this.value = value ?? 0;
+			this.left = left ?? null;
+			this.right = right ?? null;
+		}
 	}
 }
 
-class ListNode {
-	constructor(value, next) {
-		this.value = value ?? 0;
-		this.next = next ?? null;
+if (typeof ListNode === "undefined") {
+	class ListNode {
+		constructor(value, next) {
+			this.value = value ?? 0;
+			this.next = next ?? null;
+		}
 	}
 }
 
