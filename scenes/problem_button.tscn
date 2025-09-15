@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnnhf3s2ws1ym"]
+
+[ext_resource type="Theme" uid="uid://puwmd66mcrxe" path="res://resources/theme.tres" id="1_vmqct"]
+[ext_resource type="Texture2D" uid="uid://bv1kn6brhaonv" path="res://external_assets/noun_project/code_problem.png" id="2_l7q7a"]
+[ext_resource type="Script" uid="uid://26vlhwp3sj0b" path="res://scripts/problem_button.gd" id="2_qy51s"]
+
+[node name="ProblemButton" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_vmqct")
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("2_qy51s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Placeholder"
+horizontal_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_l7q7a")
+stretch_mode = 3

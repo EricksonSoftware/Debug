@@ -24,6 +24,7 @@ GameData="*res://scripts/game_data.gd"
 SolutionRunner="*res://scripts/solution_runner.gd"
 EventBus="*res://scripts/event_bus.gd"
 UserFiles="*res://scripts/user_files.gd"
+SaveData="*res://scripts/save_data.gd"
 
 [display]
 

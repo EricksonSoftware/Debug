@@ -1,6 +1,7 @@
 extends Node
 
 var problems : Dictionary[String, Problem] = {}
+var current_problem : String = ""
 
 func _ready() -> void:
 	load_config()

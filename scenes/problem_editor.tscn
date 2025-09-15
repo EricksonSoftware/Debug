@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bnovik7cs7hj6"]
+[gd_scene load_steps=7 format=3 uid="uid://bnovik7cs7hj6"]
 
 [ext_resource type="Script" uid="uid://eabni6bbij4" path="res://scripts/problem_editor.gd" id="1_oth8r"]
 [ext_resource type="StyleBox" uid="uid://dn7mlq2dd4r86" path="res://resources/panel.tres" id="1_ti25y"]
@@ -7,6 +7,17 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_58uox"]
 bg_color = Color(0.09453329, 0.101342656, 0.1388149, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j4ls1"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0.1882353)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="ProblemEditor" type="PanelContainer"]
 anchors_preset = 15
@@ -31,19 +42,42 @@ layout_mode = 2
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/SplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 8
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/SplitContainer/VBoxContainer2"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
+[node name="BackButton" type="Button" parent="MarginContainer/SplitContainer/VBoxContainer2/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_vf5fu")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("4_64x5r")
+theme_override_styles/normal_mirrored = ExtResource("4_64x5r")
+theme_override_styles/pressed = ExtResource("4_64x5r")
+theme_override_styles/pressed_mirrored = ExtResource("4_64x5r")
+theme_override_styles/hover = ExtResource("4_64x5r")
+theme_override_styles/hover_mirrored = ExtResource("4_64x5r")
+theme_override_styles/hover_pressed = ExtResource("4_64x5r")
+theme_override_styles/hover_pressed_mirrored = ExtResource("4_64x5r")
+theme_override_styles/disabled = ExtResource("4_64x5r")
+theme_override_styles/disabled_mirrored = ExtResource("4_64x5r")
+theme_override_styles/focus = ExtResource("4_64x5r")
+text = " Back "
+
 [node name="ProblemTitle" type="Label" parent="MarginContainer/SplitContainer/VBoxContainer2/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 2
 theme = ExtResource("1_vf5fu")
 text = "Problem Title"
 
 [node name="ResetCodeButton" type="Button" parent="MarginContainer/SplitContainer/VBoxContainer2/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 10
 theme = ExtResource("1_vf5fu")
@@ -63,6 +97,7 @@ text = " Reset Code "
 
 [node name="RunCodeButton" type="Button" parent="MarginContainer/SplitContainer/VBoxContainer2/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 theme = ExtResource("1_vf5fu")
@@ -99,6 +134,7 @@ layout_mode = 2
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/SplitContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_j4ls1")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/SplitContainer/VBoxContainer/PanelContainer"]
 layout_mode = 2

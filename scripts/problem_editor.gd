@@ -8,6 +8,7 @@ extends PanelContainer
 @onready var reset_code_button: Button = %ResetCodeButton
 @onready var run_code_button: Button = %RunCodeButton
 @onready var output: RichTextLabel = %Output
+@onready var back_button: Button = %BackButton
 
 var problem : Problem
 
@@ -18,7 +19,9 @@ func _ready() -> void:
 	EventBus.code_problem_output_clear.connect(on_clear)
 	reset_code_button.pressed.connect(load_problem)
 	run_code_button.pressed.connect(run_code)
+	back_button.pressed.connect(on_back)
 	
+	problem_id = GameData.current_problem
 	problem = GameData.problems[problem_id]
 	load_problem()
 
@@ -34,9 +37,6 @@ func load_problem() -> void:
 		var instance : JavaScriptCodeEditor = ResourceLoader.load("res://scenes/javascript_code_editor.tscn", "", ResourceLoader.CACHE_MODE_IGNORE).instantiate()
 		instance.text = line
 		instance.editable = i in problem.editable
-		if instance.editable:
-			
-			instance.set_caret_column.call_deferred(99)
 		editor_container.add_child(instance)
 
 func run_code() -> void:
@@ -56,6 +56,12 @@ func on_error_append(message : String) -> void:
 
 func on_complete(success : bool) -> void:
 	print(success)
+	if success:
+		SaveData.set_problem_completed(problem_id)
+		on_back()
 
 func on_clear() -> void:
 	output.text = ""
+
+func on_back() -> void:
+	get_tree().change_scene_to_file("res://scenes/problem_selection.tscn")
